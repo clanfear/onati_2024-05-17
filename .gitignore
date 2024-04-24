@@ -49,3 +49,5 @@ po/*~
 rsconnect/
 
 ignore/
+
+data/raw/
