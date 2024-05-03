@@ -63,7 +63,7 @@ cdc_mortality |>
   scale_linetype_manual(values = c("All" = "dashed", "Firearm" = "solid")) +
   geom_hline(yintercept = 0, color = "white", linewidth = 0.25) +
   geom_text(data = ~ . |> filter(year == 1988) |> mutate(rate = ifelse(type == "All", rate + 1, rate -1)), aes(label = type), family = plot_font) +
-  xlab(NULL) + ylab("Rates per 100,000") +
+  labs(x = NULL, y = "Rates per 100,000", caption = "Source: CDC WONDER") +
   theme_minimal(base_size = 24) +
   theme(panel.grid = element_blank(),
         axis.text = element_text(color = "white"),
@@ -86,7 +86,7 @@ chicago_rates_year |>
   scale_linetype_manual(values = c("All" = "dashed", "Firearm" = "solid")) +
   geom_hline(yintercept = 0, color = "white", linewidth = 0.25) +
   geom_text(data = ~ . |> filter(year == 1987) |> mutate(rate = ifelse(type == "All", rate + 4, rate -3)), aes(label = type), family = plot_font) +
-  xlab(NULL) + ylab("Rates per 100,000") +
+  labs(x = NULL, y = "Rates per 100,000", caption = "Source: FBI UCR SHR") +
   theme_minimal(base_size = 24) +
   theme(panel.grid = element_blank(),
         axis.text = element_text(color = "white"),
@@ -157,7 +157,7 @@ ggplot(aes(x = age, y = pr, fill = stage)) +
   scale_y_continuous(breaks = NULL) +
   facet_wrap(~year, nrow = 1) +
   theme_minimal(base_size = 24) +
-  labs(x = "Age of handgun homicide offenders in UCR SHR 1995 and 2021", y = NULL) +
+  labs(x = "Age of handgun homicide offenders", y = NULL, caption = "Source: FBI UCR SHR") +
   theme(panel.grid = element_blank(),
         strip.text = element_text(family = plot_font,  color = "white", size = rel(1.2)),
         axis.ticks.x = element_line(color = "white"),
