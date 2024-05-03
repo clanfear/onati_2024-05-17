@@ -55,8 +55,8 @@ gg_color_hue <- function(n) {
 ## Homicide in the US {background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
 
 ```{r homicide-in-us, cache = TRUE}
-load("./data/shr_rates_year.RData")
-shr_rates_year |>
+load("./data/cdc_mortality.RData")
+cdc_mortality |>
   filter(year >= 1987) |>
   ggplot(aes(x = year, y = rate, group = type, color = type, linetype = type)) + 
   geom_line() +

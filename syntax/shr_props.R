@@ -43,7 +43,7 @@ save(chicago_rates_year, file = "./data/chicago_rates_year.RData")
 #   ungroup()
 
 library(gganimate)
-
+load("./data/cdc_mortality.RData")
 anim_years <- 1990:2021
 
 shr_props_year <- shr_raw |>
@@ -97,7 +97,7 @@ animate(shr_age_distribution,
         start_pause = 6,
         bg = 'transparent')
 
-shr_rates_anim <- shr_rates_year |>
+shr_rates_anim <- cdc_mortality |>
   filter(year %in% anim_years) |>
   select(year, rate, type) |>
   mutate(dot_year = min(anim_years)) |>
@@ -105,7 +105,7 @@ shr_rates_anim <- shr_rates_year |>
   mutate(draw = dot_year == year) |>
   ggplot(aes(x = year, y = rate, group = type, color = type, linetype = type)) + 
   geom_line(linewidth = 1.5) +
-  geom_text(data = tibble(year = c(2005, 2005), rate = c(2.25,5.75), type = c("Firearm", "All")), 
+  geom_text(data = tibble(year = c(2005, 2005), rate = c(3.25,7), type = c("Firearm", "All")), 
             aes(label = type), size = 10, family = plot_font) +
   geom_point(data = ~ . |> filter(draw), aes(x = dot_year, color = type), size = 6) +
   transition_time(dot_year) +
