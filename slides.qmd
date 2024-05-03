@@ -52,7 +52,7 @@ gg_color_hue <- function(n) {
 ```
 
 
-## [Homicide in the US]{.r-fit-text} {background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
+## Homicide in the US {background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
 
 ```{r homicide-in-us, cache = TRUE}
 load("./data/shr_rates_year.RData")
@@ -75,7 +75,7 @@ shr_rates_year |>
 
 Homicides increasingly use guns
 
-## [Homicide in Chicago]{.r-fit-text} {background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
+## Homicide in Chicago {background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
 
 ```{r homicide-in-chicago, cache = TRUE}
 load("./data/chicago_rates_year.RData")
@@ -99,7 +99,7 @@ chicago_rates_year |>
 This is exaggerated in cities where recent spikes were largest
 
 
-## Test
+## [Changing age distribution of homicide]{.r-fit-text}
 
 :::: {.columns}
 
@@ -115,17 +115,17 @@ This is exaggerated in cities where recent spikes were largest
 
 ::::
 
-## [Gun homicide is increasingly by adults]{.r-fit-text}{background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
+## [Gun homicide is increasingly committed by adults]{.r-fit-text}{background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
 
 
 ```{r handgun-homicide}
 load("./data/shr_props_year.RData")
-col_vec <- setNames(c("#00BFC4", "#F8766D", "grey50"), c("Adolescence", "Early Adulthood", ""))
+col_vec <- setNames(c("#00BFC4", "#F8766D"), c("Adolescence", "Adulthood"))
 shr_props_year <- shr_props_year |>
   filter(between(age, 10, 60)) |>
   mutate(stage = case_when(
     between(age, 10, 20) ~ "Adolescence",
-    between(age, 21, 45) ~ "Early Adulthood",
+    age >= 21 ~ "Adulthood",
     TRUE ~ ""
   ))
 
