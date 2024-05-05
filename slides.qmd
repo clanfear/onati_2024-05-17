@@ -7,6 +7,7 @@ format:
     self-contained: false
     width: 1200
     height: 800
+    auto-stretch: true
 editor: source
 mouse-wheel: true
 history: false
@@ -73,7 +74,7 @@ cdc_mortality |>
         legend.position = "none")
 ```
 
-Homicides increasingly use guns
+Spiked recently and increasingly involves guns
 
 ## Homicide in Chicago {background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
 
@@ -86,7 +87,7 @@ chicago_rates_year |>
   scale_linetype_manual(values = c("All" = "dashed", "Firearm" = "solid")) +
   geom_hline(yintercept = 0, color = "white", linewidth = 0.25) +
   geom_text(data = ~ . |> filter(year == 1987) |> mutate(rate = ifelse(type == "All", rate + 4, rate -3)), aes(label = type), family = plot_font) +
-  labs(x = NULL, y = "Rates per 100,000", caption = "Source: FBI UCR SHR") +
+  labs(x = NULL, y = "Rates per 100,000", caption = "Source: Chicago PD") +
   theme_minimal(base_size = 24) +
   theme(panel.grid = element_blank(),
         axis.text = element_text(color = "white"),
@@ -96,7 +97,45 @@ chicago_rates_year |>
         legend.position = "none")
 ```
 
-This is exaggerated in cities where recent spikes were largest
+Exaggerated in cities like Chicago, Philadelphia, Dallas
+
+
+## 
+
+![](img/jno.png)
+
+Exposure risk is interaction of cohort (age x period), race, and sex
+
+* Adolescent exposure high in early 1990s, low afterward
+* Adult exposure low until 2016-2021
+   * Concentrated among Black and Hispanic
+
+. . .
+
+**Question:** *What drove these large swings in violence?*
+
+* One key proximal cause: **gun carrying**
+
+
+# Gun Carrying
+
+How does macro-context impact carrying across life course?
+
+## [Cohort and period effects on gun carrying onset]{.r-fit-text}{background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
+
+![](img/all-curves-weighted.png){width=300}
+
+High for 1990s adolescents and everyone in 2016–2021
+
+## [Different drivers by life stage]{.r-fit-text}{background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
+
+![](img/exposure_prediction_plot.png){width=300}
+
+* Adolescent sensitive to exposure
+* Adults to macro-instability
+
+# How does life-course variation in carrying impact rates of violence? {background-image="img/clay-banks-nsAn3nSW5T0-unsplash.jpg" background-opacity="0.4"}
+
 
 
 ## [Changing age distribution of homicide]{.r-fit-text}
@@ -171,90 +210,101 @@ ggplot(aes(x = age, y = pr, fill = stage)) +
 ```
 
 
-# Gun Carrying
 
-## [Age and period effects on gun carrying]{.r-fit-text}{background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
+## [Two similar periods of high violence, except...]{.r-fit-text}
 
-![](img/all-curves-weighted.png)
+:::: {.columns}
 
-## [Different drivers by life stage]{.r-fit-text}{background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
+::: {.column width="45%"}
+**Early 1990s**
 
-![](img/exposure_prediction_plot.png)
+* Concentrated in adolescence
+* Accumulation of macro-factors:
+   * *Demographics, lead, drug war, de-industrialization, etc.*
+* Gun carry in context of gangs and urban drug markets
 
-## Questions {background-image="img/clay-banks-nsAn3nSW5T0-unsplash.jpg" background-opacity="0.4"}
+:::
 
-* How does macro-context impact carrying across life course?
+::: {.column width="10%"}
+&nbsp;
+:::
 
-. . .
+::: {.column width="45%"}
 
-* How does life-course variation in carrying impact rates of violence?
+**2016-2021**
 
-## An abstract boat
+* Concentrated in adulthood
+* Rapid macrosocial instability:
+   * *Trump, Ferguson, COVID-19, Floyd, etc.*
+* Gun carry in context of general insecurity and legal cynicism
+:::
+
+::::
+
+**Both:** Similar (stark) sex and race heterogeneity
+
+## A theoretical model
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
 
 ```{dot}
+//| fig-width: 6
 digraph G{
   graph [layout=neato, bgcolor="transparent"]
-  
   node [shape = plaintext, fontname="Open Sans", fontcolor="white"]
   edge [color="white"]
   
- sc1 [pos = "0,  1!", label = "Current\nContext"]
-  si [pos = "0.5,  0!", label = "Situation"]
-  sa [pos = "2.5,  0!", label = "Action"]
-  sc2 [pos = "3,  1!", label = "Future\nContext"]
-  i1 [pos = "-2, 0!", label = "Life\nHistory"]
-  i2 [pos = "5, 0!", label = "New\nHistory"]
-  
-  {sc1, i1} -> si
-  sc1 -> sc2
-  si -> sa
-  sa -> {i2, sc2}
-}
-```
-
-## A concrete boat
-
-
-```{dot}
-digraph G{
-  graph [layout=neato, bgcolor="transparent"]
-  
-  node [shape = plaintext, fontname="Open Sans", fontcolor="white"]
-  edge [color="white"]
-  
- sc1 [pos = "0,  3.5!", label = "Diffuse\nthreats"]
-  si [pos = "0.5,  2.5!", label = "Generalized fear\nCynicism"]
-  sa [pos = "2.5,  2.5!", label = "Adult gun\ncarrying"]
-  sc2 [pos = "3,  3.5!", label = "Increased\nadult\nviolence"]
-  i1 [pos = "-2, 2.5!", label = "Race\nSex"]
-  
-  {sc1, i1} -> si
-  sc1 -> sc2
-  si -> sa
-  sa -> sc2
-  
-  bsc1 [pos = "0,  1!", label = "Immediate\nthreats"]
-  bsi [pos = "0.5,  0!", label = "Specific fear"]
-  bsa [pos = "2.5,  0!", label = "Youth gun\ncarrying"]
-  bsc2 [pos = "3,  1!", label = "Increased\nyouth\nviolence"]
-  bi1 [pos = "-2, 0!", label = "Race\nSex"]
+  btitle [pos = "1.5,  5.25!", label = "Adolescent Process", fontcolor = yellow]
+  bsc1 [pos = "0,  4.5!", label = "Immediate\nthreats\n(Exposure)"]
+  bsi [pos = "0.5,  3!", label = "Specific fear\n(Risky situations)"]
+  bsa [pos = "2.5,  3!", label = "Youth gun\ncarrying\n(Illegal)"]
+  bsc2 [pos = "3,  4.5!", label = "Increased\nyouth\nviolence"]
+  bi1 [pos = "-1.25, 3!", label = "Race\nSex"]
   
   {bsc1, bi1} -> bsi
   bsc1 -> bsc2
   bsi -> bsa
   bsa -> bsc2
-  
 }
 ```
 
-## {.nostretch background-image="img/clay-banks-nsAn3nSW5T0-unsplash.jpg" background-opacity="0.15"}
-
-![](img/phdcn_logo_white.svg){width=700px align=center}
-
-* Cohorts born 1981, 1984, 1987, and 1996
-   * Average ages 25 to 40 in 2021
+:::
 
 
+::: {.column width="50%"}
+
+```{dot}
+//| fig-width: 6
+digraph G{
+  graph [layout=neato, bgcolor="transparent"]
+  node [shape = plaintext, fontname="Open Sans", fontcolor="white"]
+  edge [color="white"]
+  
+  title [pos = "1.5,  2.25!", label = "Adult Process", fontcolor = yellow]
+  sc1 [pos = "0,  1.5!", label = "Diffuse\nthreats\n(Instability)"]
+  si [pos = "0.5,  0!", label = "General fear\n& cynicism\n(Risky world)"]
+  sa [pos = "2.5,  0!", label = "Adult gun\ncarrying\n(Mostly legal)"]
+  sc2 [pos = "3,  1.5!", label = "Increased\nadult\nviolence"]
+  i1 [pos = "-1.25, 0!", label = "Race\nSex"]
+  
+  {sc1, i1} -> si
+  sc1 -> sc2
+  si -> sa
+  sa -> sc2
+}
+```
+
+:::
+
+::::
+
+*Differentially activated by macrosocial change*
+
+* Youth process declined after 1990s
+* Adult process activated recently
 
 ## New Questions {background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.15"}
 
