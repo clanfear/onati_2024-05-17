@@ -60,10 +60,14 @@ load("./data/cdc_mortality.RData")
 cdc_mortality |>
   filter(year >= 1987) |>
   ggplot(aes(x = year, y = rate, group = type, color = type, linetype = type)) + 
-  geom_line() +
+  geom_line(linewidth = 1) +
   scale_linetype_manual(values = c("All" = "dashed", "Firearm" = "solid")) +
   geom_hline(yintercept = 0, color = "white", linewidth = 0.25) +
-  geom_text(data = ~ . |> filter(year == 1988) |> mutate(rate = ifelse(type == "All", rate + 1, rate -1)), aes(label = type), family = plot_font) +
+  geom_text(data = ~ . |> filter(year == 1988) |> 
+              mutate(rate = ifelse(type == "All", rate + 1, rate -1)), 
+            aes(label = type), 
+            family = plot_font,
+            size = 6) +
   labs(x = NULL, y = "Rates per 100,000", caption = "Source: CDC WONDER") +
   theme_minimal(base_size = 24) +
   theme(panel.grid = element_blank(),
@@ -83,10 +87,10 @@ load("./data/chicago_rates_year.RData")
 chicago_rates_year |>
   filter(year >= 1985) |>
   ggplot(aes(x = year, y = rate, group = type, color = type, linetype = type)) + 
-  geom_line() +
+  geom_line(linewidth = 1) +
   scale_linetype_manual(values = c("All" = "dashed", "Firearm" = "solid")) +
   geom_hline(yintercept = 0, color = "white", linewidth = 0.25) +
-  geom_text(data = ~ . |> filter(year == 1987) |> mutate(rate = ifelse(type == "All", rate + 4, rate -3)), aes(label = type), family = plot_font) +
+  geom_text(data = ~ . |> filter(year == 1987) |> mutate(rate = ifelse(type == "All", rate + 4, rate -3)), aes(label = type), family = plot_font, size = 6) +
   labs(x = NULL, y = "Rates per 100,000", caption = "Source: Chicago PD") +
   theme_minimal(base_size = 24) +
   theme(panel.grid = element_blank(),
@@ -100,15 +104,15 @@ chicago_rates_year |>
 Exaggerated in cities like Chicago, Philadelphia, Dallas
 
 
-## 
+## {background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
 
 ![](img/jno.png)
 
-Exposure risk is interaction of cohort (age x period), race, and sex
+Exposure to gun violence varies sharply by cohort, race, and sex
 
 * Adolescent exposure high in early 1990s, low afterward
 * Adult exposure low until 2016-2021
-   * Concentrated among Black and Hispanic
+* Black and Hispanic males at highest risk
 
 . . .
 
@@ -117,24 +121,23 @@ Exposure risk is interaction of cohort (age x period), race, and sex
 * One key proximal cause: **gun carrying**
 
 
-# Gun Carrying
+# Gun Carrying {background-image="img/pedro-lastra-5Bv3EcijAl4-unsplash.jpg" background-opacity="0.3"}
 
 How does macro-context impact carrying across life course?
 
-## [Cohort and period effects on gun carrying onset]{.r-fit-text}{background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
+## [Cohort and period effects on gun carrying onset]{.r-fit-text}{background-image="img/pedro-lastra-5Bv3EcijAl4-unsplash.jpg" background-opacity="0.15"}
 
 ![](img/all-curves-weighted.png){width=300}
 
 High for 1990s adolescents and everyone in 2016–2021
 
-## [Different drivers by life stage]{.r-fit-text}{background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
+## [Different drivers by life stage]{.r-fit-text}{background-image="img/pedro-lastra-5Bv3EcijAl4-unsplash.jpg" background-opacity="0.15"}
 
-![](img/exposure_prediction_plot.png){width=300}
+![](img/exposure_prediction_plot.png){width=300 fig-align="center"}
 
-* Adolescent sensitive to exposure
-* Adults to macro-instability
+Adolescents but not adults are sensitive to exposure
 
-# How does life-course variation in carrying impact rates of violence? {background-image="img/clay-banks-nsAn3nSW5T0-unsplash.jpg" background-opacity="0.4"}
+# How does life-course variation in carrying impact rates of violence? {background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.3"}
 
 
 
@@ -154,12 +157,13 @@ High for 1990s adolescents and everyone in 2016–2021
 
 ::::
 
-## [Gun homicide is increasingly committed by adults]{.r-fit-text}{background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
+## [Gun homicide is increasingly committed by adults]{.r-fit-text}{background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.15"}
 
 
 ```{r handgun-homicide}
 load("./data/shr_props_year.RData")
-col_vec <- setNames(c("#00BFC4", "#F8766D"), c("Adolescence", "Adulthood"))
+
+col_vec <- setNames(c("#7CAE00", "#C77CFF"), c("Adolescence", "Adulthood"))
 shr_props_year <- shr_props_year |>
   filter(between(age, 10, 60)) |>
   mutate(stage = case_when(
@@ -174,7 +178,7 @@ shr_sums <- shr_props_year |>
             .by = c(year, stage)) |>
   filter(stage != "") |>
   mutate(x = ifelse(stage == "Adolescence", 10, 35),
-         y = 0.04)
+         y = 0.048)
 shr_medians <- shr_props_year |>
   group_by(year) |>
   filter(cum_pr >= 0.5) |>
@@ -184,7 +188,7 @@ shr_medians <- shr_props_year |>
 shr_props_year |>
 ggplot(aes(x = age, y = pr, fill = stage)) + 
   geom_col() +
-  geom_text(data = tibble(stage = names(col_vec)[1:2], x = c(10, 35), y = c(0.047, 0.047), year = c(2021,2021)), 
+  geom_text(data = tibble(stage = names(col_vec)[1:2], x = c(10, 35), y = c(0.055, 0.055), year = c(2021,2021)), 
             aes(x=x, y=y, label = stage, color = stage), family = plot_font, size = 6.25, lineheight = 0.4) +
   geom_text(data = shr_sums, 
             aes(x = x, y = y, label = label, color = stage), size = 6.25, family = plot_font) +
@@ -211,7 +215,7 @@ ggplot(aes(x = age, y = pr, fill = stage)) +
 
 
 
-## [Two similar periods of high violence, except...]{.r-fit-text}
+## [Two similar periods of high violence, except...]{.r-fit-text}{background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.15"}
 
 :::: {.columns}
 
@@ -219,7 +223,7 @@ ggplot(aes(x = age, y = pr, fill = stage)) +
 **Early 1990s**
 
 * Concentrated in adolescence
-* Accumulation of macro-factors:
+* Slow accumulation of macro factors:
    * *Demographics, lead, drug war, de-industrialization, etc.*
 * Gun carry in context of gangs and urban drug markets
 
@@ -236,14 +240,41 @@ ggplot(aes(x = age, y = pr, fill = stage)) +
 * Concentrated in adulthood
 * Rapid macrosocial instability:
    * *Trump, Ferguson, COVID-19, Floyd, etc.*
-* Gun carry in context of general insecurity and legal cynicism
+* Gun carry in context of widespread insecurity and legal cynicism
 :::
 
 ::::
 
-**Both:** Similar (stark) sex and race heterogeneity
+**Both:** Stark sex and race heterogeneity
 
-## A theoretical model
+## [Social change, cohort context, and the life course]{.r-fit-text}{background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.15"}
+
+```{dot}
+//| fig-width: 8
+digraph G{
+  graph [layout=neato, bgcolor="transparent"]
+  node [shape = plaintext, fontname="Open Sans", fontcolor="white"]
+  edge [color="white"]
+  
+  
+  bsc1 [pos = "0,  4.5!", label = "Social\nChange"]
+  bsi [pos = "1,  2.5!", label = "Age-graded\ncontexts"]
+  bsa [pos = "4,  2.5!", label = "Crime and\npunishment"]
+  bsc2 [pos = "5,  4.5!", label = "Future social\nchange / contexts"]
+  
+  bsc1bsc2 [pos = "2.5,  4.75!", label = "Macro-historical", fontcolor = yellow]
+  bsabsc2 [pos = "-0.25,  3.5!", label = "Cohort\ndifferentiation", fontcolor = yellow]
+  bsibsa [pos = "2.5,  2.25!", label = "Life course", fontcolor = yellow]
+  bsc1bsi [pos = "5.25,  3.5!", label = "Cohort\ndynamics", fontcolor = yellow]
+  
+  bsc1 -> bsi
+  bsc1 -> bsc2
+  bsi -> bsa
+  bsa -> bsc2
+}
+```
+
+## [Social change, gun carrying, and violence]{.r-fit-text}{background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.15"}
 
 
 :::: {.columns}
@@ -258,12 +289,12 @@ digraph G{
   edge [color="white"]
   
   btitle [pos = "1.5,  5.25!", label = "Adolescent Process", fontcolor = yellow]
-  bsc1 [pos = "0,  4.5!", label = "Immediate\nthreats\n(Exposure)"]
-  bsi [pos = "0.5,  3!", label = "Specific fear\n(Risky situations)"]
+  bsc1 [pos = "0,  4.5!", label = "Local\ninstability"]
+  bsi [pos = "0.5,  3!", label = "Specific fear\n& cynicism\n(Risky situations)"]
   bsa [pos = "2.5,  3!", label = "Youth gun\ncarrying\n(Illegal)"]
   bsc2 [pos = "3,  4.5!", label = "Increased\nyouth\nviolence"]
   bi1 [pos = "-1.25, 3!", label = "Race\nSex"]
-  
+
   {bsc1, bi1} -> bsi
   bsc1 -> bsc2
   bsi -> bsa
@@ -284,7 +315,7 @@ digraph G{
   edge [color="white"]
   
   title [pos = "1.5,  2.25!", label = "Adult Process", fontcolor = yellow]
-  sc1 [pos = "0,  1.5!", label = "Diffuse\nthreats\n(Instability)"]
+  sc1 [pos = "0,  1.5!", label = "Societal\ninstability"]
   si [pos = "0.5,  0!", label = "General fear\n& cynicism\n(Risky world)"]
   sa [pos = "2.5,  0!", label = "Adult gun\ncarrying\n(Mostly legal)"]
   sc2 [pos = "3,  1.5!", label = "Increased\nadult\nviolence"]
@@ -303,15 +334,24 @@ digraph G{
 
 *Differentially activated by macrosocial change*
 
-* Youth process declined after 1990s
-* Adult process activated recently
+* Youth process: Spatially concentrated, declined after 1990s
+* Adult process: Temporally concentrated, activated recently
 
-## New Questions {background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.15"}
+## {background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.15"}
+
+![](img/cc-timeline.png)
 
 
+## Next steps and questions {background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.15"}
+
+* Are the observed patterns *real* in first place?
+* How can this be tested?
+  * Is increasing carry cause or consequence of violence?
+* Is it changes in context or changes in responses to context? Both? Time-dependent?
+  * *Gun culture*, *social media*, *polarization*, *unstructured socialization*
 
 
-## Feedback and Questions {.smaller background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.4"}
+## Feedback and Questions {background-image="img/benjamin-suter-mpLex62zVKQ-unsplash.jpg" background-opacity="0.3"}
 
 Contact:
 
@@ -328,4 +368,4 @@ For more about the PHDCN+:
 | <https://sites.harvard.edu/phdcn/>
 | [https://doi.org/10.1007/s40865-022-00203-0](https://sites.harvard.edu/phdcn/)
 
-# Appendix {background-image="img/max-bender-yb7Yg3Rv7WA-unsplash.jpg" background-opacity="0.4"} 
+# Appendix {background-image="img/benjamin-suter-mpLex62zVKQ-unsplash.jpg" background-opacity="0.3"}

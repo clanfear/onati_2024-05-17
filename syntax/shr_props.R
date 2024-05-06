@@ -3,14 +3,48 @@ library(tidyverse)
 
 load("./data/raw/hom_rate_df.RData")
 
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
 
+pal <- gg_color_hue(4)
 
 shr_raw <- readRDS("./data/raw/shr_1976_2022.rds")
+
+domestics <- c("boyfriend", "brother", "common-law husband", "common-law wife", "daughter", 
+                             "ex-husband", "ex-wife", "father",
+               "girlfriend", "husband", "in-law", "mother",
+               "other family", "sister", "son", "stepdaughter", "stepfather", "stepmother",
+               "stepson", "wife")
+firearms <- c("rifle", "shotgun", "other gun", "handgun", "firearm, type not stated")
+# shr_raw |> 
+#   filter(offender_1_weapon %in% firearms & homicide_type != "manslaughter by negligence" & !is.na(offender_1_age)) |>
+#   mutate(relationship = case_when(
+#     victim_1_relation_to_offender_1 == "unknown" ~ "unknown",
+#     victim_1_relation_to_offender_1 == "stranger" ~ "stranger",
+#     victim_1_relation_to_offender_1 %in% domestics ~ "domestic",
+#     TRUE ~ "other")) |>
+#   group_by(relationship, year) |>
+#   mutate(age = as.numeric(str_extract(offender_1_age, "\\d+"))) |>
+#   filter(!is.na(age)) |>
+#   summarize(age = mean(age)) |>
+#   ggplot(aes(x = year, y = age, group = relationship, color = relationship)) + geom_line()
+# 
+#   summarize(stranger = mean(relationship == "stranger"),
+#             domestic = mean(relationship == "domestic"),
+#             unknown = mean(relationship == "unknown"),
+#             other = mean(relationship == "other"), 
+#                          .by = "year") |>
+#   pivot_longer(-year) |>
+#   ggplot(aes(x = year, y = value, group = name, color = name)) + geom_line()
+# 
+# count(victim_1_relation_to_offender_1) |> arrange(desc(n))
 
 fred_pop_year <- read_csv("./data/raw/fred_pop_year.csv") |>
   transmute(pop = (pop*1000)/100000,
             year = as.numeric(str_extract(date, "\\d+$")))
-firearms <- c("rifle", "shotgun", "other gun", "handgun", "firearm, type not stated")
+
 
 shr_rates_year <- shr_raw |>
   filter(between(year, 1970, 2021) & homicide_type != "manslaughter by negligence") |>
@@ -66,9 +100,12 @@ shr_props_year <- shr_raw |>
 library(showtext)
 showtext_auto()
 plot_font <- "Open Sans"
+col_vec <- setNames(c("#7CAE00", "#C77CFF"), c("Adolescence", "Adulthood"))
 font_add_google(name = plot_font)
 shr_age_distribution <- ggplot(shr_props_year, aes(age, pr, fill = stage)) +
   geom_col() +
+  scale_fill_manual(values = col_vec) +
+  annotate("text", label = c("Adolescence", "Adulthood"), color = col_vec, y = c(0.06, 0.04), x = c(30,45),  size = 8) +
   # Here comes the gganimate specific bits
   labs(title = 'Offender age distribution: {frame_time}', x = 'Age', y = NULL) +
   transition_time(year) +
