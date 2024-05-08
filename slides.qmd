@@ -4,7 +4,7 @@ format:
     theme: [night, assets/phdcn_style.scss]
     logo: img/phdcn_logo_white.svg
     incremental: false
-    self-contained: false
+    self-contained: true
     width: 1200
     height: 800
     auto-stretch: true
@@ -55,7 +55,7 @@ gg_color_hue <- function(n) {
 
 ## Homicide in the US {background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
 
-```{r homicide-in-us, cache = TRUE}
+```{r homicide-in-us}
 load("./data/cdc_mortality.RData")
 cdc_mortality |>
   filter(year >= 1987) |>
@@ -82,7 +82,7 @@ Spiked recently and increasingly involves guns
 
 ## Homicide in Chicago {background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.15"}
 
-```{r homicide-in-chicago, cache = TRUE}
+```{r homicide-in-chicago}
 load("./data/chicago_rates_year.RData")
 chicago_rates_year |>
   filter(year >= 1985) |>
