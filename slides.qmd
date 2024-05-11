@@ -116,7 +116,7 @@ Exposure to gun violence varies sharply by cohort, race, and sex
 
 . . .
 
-**Question:** *What drove these large swings in violence?*
+**Question:** *What drove these large swings in violence and exposure?*
 
 * One key proximal cause: **gun carrying**
 
@@ -274,7 +274,7 @@ digraph G{
 }
 ```
 
-## [Social change, gun carrying, and violence]{.r-fit-text}{background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.15"}
+## [Age-graded model of gun carrying and gun violence]{.r-fit-text}{background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.15"}
 
 
 :::: {.columns}
