@@ -131,11 +131,17 @@ How does macro-context impact carrying across life course?
 
 High for 1990s adolescents and everyone in 2016–2021
 
-## [Different drivers by life stage]{.r-fit-text}{background-image="img/pedro-lastra-5Bv3EcijAl4-unsplash.jpg" background-opacity="0.15"}
+## [Exposure to violence and carrying]{.r-fit-text}{background-image="img/pedro-lastra-5Bv3EcijAl4-unsplash.jpg" background-opacity="0.15"}
 
-![](img/exposure_prediction_plot.png){width=300 fig-align="center"}
+![](img/exposure_prediction_plot.png){width=280 fig-align="center"}
 
 Adolescents but not adults are sensitive to exposure
+
+## [Continuity in carrying by onset timing]{.r-fit-text}{background-image="img/pedro-lastra-5Bv3EcijAl4-unsplash.jpg" background-opacity="0.15"}
+
+![](img/continuity_within_plot.png){width=280 fig-align="center"}
+
+Most youth carriers stop carrying; most adults persist
 
 # How does life-course variation in carrying impact rates of violence? {background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.3"}
 
@@ -217,35 +223,71 @@ ggplot(aes(x = age, y = pr, fill = stage)) +
 
 ## [Two similar periods of high violence, except...]{.r-fit-text}{background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.15"}
 
-:::: {.columns}
+::::: {.columns}
 
-::: {.column width="45%"}
+:::: {.column width="45%"}
+
 **Early 1990s**
 
+::: {.fragment fragment-index=1}
+
 * Concentrated in adolescence
+
+:::
+
+::: {.fragment fragment-index=2}
+
 * Slow accumulation of macro factors:
-   * *Demographics, lead, drug war, de-industrialization, etc.*
+   * *Deindustrialization, demographics, lead, drug markets, etc.*
+
+:::
+
+::: {.fragment fragment-index=3}
+
 * Gun carry in context of gangs and urban drug markets
 
 :::
 
-::: {.column width="10%"}
-&nbsp;
-:::
+::::
 
-::: {.column width="45%"}
+:::: {.column width="10%"}
+
+&nbsp;
+
+::::
+
+:::: {.column width="45%"}
 
 **2016-2021**
 
+::: {.fragment fragment-index=1}
+
 * Concentrated in adulthood
+
+:::
+
+::: {.fragment fragment-index=2}
+
 * Rapid macrosocial instability:
    * *Trump, Ferguson, COVID-19, Floyd, etc.*
+
+:::
+
+::: {.fragment fragment-index=3}
+
 * Gun carry in context of widespread insecurity and legal cynicism
+
 :::
 
 ::::
 
+:::::
+
+::: {.fragment fragment-index=4}
+
 **Both:** Stark sex and race heterogeneity
+
+:::
 
 ## [Social change, cohort context, and the life course]{.r-fit-text}{background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.15"}
 
@@ -345,11 +387,12 @@ digraph G{
 ## Next steps and questions {background-image="img/joel-mott-s-rsM-AktbA-unsplash.jpg" background-opacity="0.15"}
 
 * Are the observed patterns *real* in first place?
+  * Offender age shift
+  * Gun carrying and lethal potential
 * How can this be tested?
   * Is increasing carry cause or consequence of violence?
 * Is it changes in context or changes in responses to context? Both? Time-dependent?
   * *Gun culture*, *social media*, *polarization*, *unstructured socialization*
-
 
 ## Feedback and Questions {background-image="img/benjamin-suter-mpLex62zVKQ-unsplash.jpg" background-opacity="0.3"}
 

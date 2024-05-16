@@ -13,62 +13,53 @@ Cohorts are comprised of individuals that, as a result of being born in a partic
 
 US homicide rates changed dramatically over the last three decades, with major peaks in the early 1990s and recent surges in 2016 and, in particular, 2020–2021 (though they did not reach the 1990s peak). Over this period, the proportion of homicides committed using a firearm has increased from approximately 65% to 80%. These patterns are more extreme in Chicago—and similar cities like Philadelphia and Dallas—where recent homicide peaks met or exceeded the early 1990s heights and the proportion of firearm homicides increased from 70% to over 90%.
 
-* Our recent work shows exposure to gun violence in this period varied sharply by cohort, race, and sex
-   * Adolescent exposure was high in the early 1990s, but low afterward
-   * Adult exposure was low until 2016-2021
-   * Black and Hispanic males were at highest risk at all periods
-
-* Question: What drove these large swings in violence?
-   * Here we propose a proximal cause: variation in gun carrying over the life course
-
-
-* Gun carrying: How does macro-context impact carrying across the life course?
-   * Our recent work shows age, period, and cohort effects on onset of gun carrying
-      * Gun carrying increases rapidly in adolescence, particularly for black and Hispanic males
-      * Increases were much larger for those coming of age during the crime peak of the 1990s
-      * Carrying increased rapidly for everyone, regardless of age, race, or sex, in 2016—2021, though was muted for the youngest cohort born in 1996
-   * This work also finds different drives of carry by life stage: Adolescent, but not adults, appear sensitive to exposure to gun violence
-
-
-* How does life-course variation in carrying impact rates of violence?
-   * Changing age distribution of homicide
-      * Handgun homicide is increasingly committed by adults
-        * In 1995, 36% of homicides were committed by offenders under 21 (i.e., adolescents)
-        * In 2021, only 21% of homicides were committed by adolescent offenders
-   * The early 1990s and 2016—2021 were two similar periods of high violence, except...
-      * The 1990s:
-         * Violence concentrated in adolescence
-         * Caused by slow accumulation of macro factors: Demographics, drug war, lead, de-industrialization, etc.
-         * Gun carry frequent in context of gangs and urban drug markets
-      * 2016—2021:
-         * Violence concentrated in adulthood
-         * Coincides with rapid macrosocial instability: Trump, Ferguson, COVID, Floyd, etc.
-         * Gun carry in context of widespread insecurity and legal cynicism
-      * In both periods we see stark race and sex heterogeneity
-
-
-* Social change, cohort context, and the life course
-  * Consider a basic Coleman boat micro-macro model of cohorts and the life course (GRAPHIC)
-     * Period x age interaction = cohort effects
-  * From this, we propose a tentative age-graded micro-macro model of gun carrying and gun violence
-     * Adolescent process:
-        * Local instability, e.g., concentrated disadvantage and resulting illicit markets, fosters specific fear of violence, legal cynicism, street codes (i.e., this is a dangerous place); Exposure to these conditions and situations is shaped by race and sex
-        * Fear and cynicism increase youth gun carrying (which is always illegal)
-        * Prevalence of youth gun carrying increases the likelihood of shootings during interactions, increasing aggregate gun violence; This violence should be spatially concentrated, age-limited for offenders, and victims should be similar in age (also race) to offenders
-      * Adult process:
-        * Societal or macro-instability, e.g., COVID-19 and Floyd, fosters generalized fear and cynicism (i.e., the world is dangerous and uncertain); Exposure to these is less conditioned on race and sex
-        * Fear and cynicism increase adult gun carrying (which is usually but not always legal)
-        * Prevalence of adult gun carrying increases the likelihood of shootings during interactions, increasing aggregate gun violence; This is less spatially concentrated, not age-limited for offenders, and victims will be less similar to offenders in age, race, etc.
-      * These processes may operate similarly in both time periods but are differentially activated by macro-context to produce period effects
-        * Youth process dominated in 1990s
-        * Adult process dominates in 2016–2021
-
-
-* Next steps and questions
-   * Are the observed patterns real in the first place?
-   * How can this be tested?
-      * Is increasing carry cause or consequence of violence?
-   * Is it changes in context or changes in responses to context? Both? Time-dependent?
-      * Gun culture, social media, polarization, unstructured socialization
-    * Puzzles:
-       * Youth process appears to have slowed after early 1990s but particularly slowed starting around 2010; is this the decline in unstructured socializing?
+-   Our recent work shows exposure to gun violence in this period varied sharply by cohort, race, and sex
+    -   Adolescent exposure was high in the early 1990s, but low afterward
+    -   Adult exposure was low until 2016-2021
+    -   Black and Hispanic males were at highest risk at all periods
+-   Question: What drove these large swings in violence?
+    -   Here we propose a proximal cause: variation in gun carrying over the life course
+-   Gun carrying: How does macro-context impact carrying across the life course?
+    -   Our recent work shows age, period, and cohort effects on onset of gun carrying
+        -   Gun carrying increases rapidly in adolescence, particularly for black and Hispanic males
+        -   Increases were much larger for those coming of age during the crime peak of the 1990s
+        -   Carrying increased rapidly for everyone, regardless of age, race, or sex, in 2016—2021, though was muted for the youngest cohort born in 1996
+    -   This work also finds different drives of carry by life stage: Adolescent, but not adults, appear sensitive to exposure to gun violence
+-   How does life-course variation in carrying impact rates of violence?
+    -   Changing age distribution of homicide
+        -   Handgun homicide is increasingly committed by adults
+            -   In 1995, 36% of homicides were committed by offenders under 21 (i.e., adolescents)
+            -   In 2021, only 21% of homicides were committed by adolescent offenders
+    -   The early 1990s and 2016—2021 were two similar periods of high violence, except...
+        -   The 1990s:
+            -   Violence concentrated in adolescence
+            -   Caused by slow accumulation of many proposed macro factors: De-industrialization (Lacey et al.), demographics, drug war, lead, etc.
+            -   Gun carry frequent in context of gangs and urban drug markets
+        -   2016—2021:
+            -   Violence concentrated in adulthood
+            -   Coincides with rapid macrosocial instability: Trump, Ferguson, COVID, Floyd, etc.
+            -   Gun carry in context of widespread insecurity and legal cynicism
+        -   In both periods we see stark race and sex heterogeneity
+-   Social change, cohort context, and the life course
+    -   Consider a basic Coleman boat micro-macro model of cohorts and the life course (GRAPHIC)
+        -   Period x age interaction = cohort effects
+    -   From this, we propose a tentative age-graded micro-macro model of gun carrying and gun violence
+        -   Adolescent process:
+            -   Local instability, e.g., concentrated disadvantage and resulting illicit markets, fosters specific fear of violence, legal cynicism, street codes (i.e., this is a dangerous place); Exposure to these conditions and situations is shaped by race and sex
+            -   Fear and cynicism increase youth gun carrying (which is always illegal)
+            -   Prevalence of youth gun carrying increases the likelihood of shootings during interactions, increasing aggregate gun violence; This violence should be spatially concentrated, age-limited for offenders, and victims should be similar in age (also race) to offenders
+        -   Adult process:
+            -   Societal or macro-instability, e.g., COVID-19 and Floyd, fosters generalized fear and cynicism (i.e., the world is dangerous and uncertain); Exposure to these is less conditioned on race and sex
+            -   Fear and cynicism increase adult gun carrying (which is usually but not always legal)
+            -   Prevalence of adult gun carrying increases the likelihood of shootings during interactions, increasing aggregate gun violence; This is less spatially concentrated, not age-limited for offenders, and victims will be less similar to offenders in age, race, etc.
+        -   These processes may operate similarly in both time periods but are differentially activated by macro-context to produce period effects
+            -   Youth process dominated in 1990s
+            -   Adult process dominates in 2016–2021
+-   Next steps and questions
+    -   Are the observed patterns real in the first place?
+    -   How can this be tested?
+        -   Is increasing carry cause or consequence of violence?
+    -   Is it changes in context or changes in responses to context? Both? Time-dependent?
+        -   Gun culture, social media, polarization, unstructured socialization
+    -   Puzzles:
+        -   Youth process appears to have slowed after early 1990s but particularly slowed starting around 2010; is this the decline in unstructured socializing?
